@@ -19,7 +19,20 @@ class UsersController {
     public function create($data)
     {
         if (!empty($data)) {
-            $this->model->insert($data);
+            $uploaddir = './views/uploads/';
+            $uploadfile = $uploaddir . basename($_FILES['upfile']['name']);        
+
+
+            if ($this->model->insert($data,$uploadfile) == 1 ){                   
+
+                    if (move_uploaded_file($_FILES['upfile']['tmp_name'], $uploadfile)) {
+                        echo "Foto caregado com sucesso.\n";
+                    } else {
+                        echo "utilizador criado, mas problema com foto!\n";
+                    }
+            } else {
+                echo "erro na criacao do utilizador";
+            }
           // header('Location: "/phpcrudpdo/index.php"'  );   
         } else {
 

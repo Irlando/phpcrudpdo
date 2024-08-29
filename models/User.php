@@ -18,21 +18,22 @@ class UserModel extends Connect {
         return $sqlSelect->fetchAll(PDO::FETCH_ASSOC);
         //$this->table->from($this->table);
     }
-    function insert($data)
+    function insert($data,  $uploadfile)
     {
+        
          $newpass = "";
-        try {
-            
+        try {    
+                    
+            $uploadfile = str_replace('.', '', $uploadfile);
             if ($data["password"]) {
                 $newpass = md5($data["password"]);
             }
-            $sqlInsert = "INSERT INTO $this->table (username, password, name, position) VALUES (:username, :password, :name, :position);";
-            $resultQuery = $this->prepare($sqlInsert)->execute(['username'=>$data['username'],'password'=>$newpass,'name'=>$data['name'],'position'=>$data['position']]);
+            $sqlInsert = "INSERT INTO $this->table (username, password, name, position, photo_perfil) VALUES (:username, :password, :name, :position, :photo_perfil);";
+            $resultQuery = $this->prepare($sqlInsert)->execute(['username'=>$data['username'],'password'=>$newpass,'name'=>$data['name'],'position'=>$data['position'],'photo_perfil'=>$uploadfile]);
             return $resultQuery;
             
         } catch (Exception $e) {
-             throw new exception('error !' . $e->getMessage());
-                 die();
+               throw new exception('error !' . $e->getMessage());
         }
        
     }

@@ -3,7 +3,7 @@
         <h5 class="card-title fw-semibold mb-4">Forms</h5>
         <div class="card">
             <div class="card-body">
-            <form action="?a=create" method="post" >
+            <form action="?a=create" method="post" enctype="multipart/form-data">
                 <div class="row">
                 <div class="col-md-8">
                     <div class="mb-3">
@@ -34,7 +34,7 @@
                         <img src="views/styles/src/assets/images/products/s4.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">upload file</h5>  
-                              <input type="file" name="upfile" class="form-control" id="exampleInputPassword1">                  
+                              <input type="file" name="upfile" class="form-control" id="upfile_id">                  
                             <!-- a href="#" class="btn btn-primary">carregar imagens</a-->
                         </div>
                     </div>
