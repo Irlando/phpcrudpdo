@@ -122,11 +122,17 @@
                         'edit' => ['editado','editar'],
                         'delete' => ['deletado','deletar'],
                         'update' => ['atualizado','atualizar'],
-                        'insert' => ['inserido','inserir']
+                        'insert' => ['inserido','inserir'],
+                        'view'=> ['detalhes','detalhes'],
                     ];
                     $controller->{$action}($messages[$message][0],$messages[$message][1],$status);
                 }
                 else if($action == "delete")
+                {
+                    $id = $_GET['id'];
+                    $controller->{$action}($id);
+                } 
+                 else if($action == "detalhes")
                 {
                     $id = $_GET['id'];
                     $controller->{$action}($id);
@@ -150,7 +156,57 @@
          
         </div>
     </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-4" id="myModalLabel">Detalhes</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">   
+              
+              <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <h3>User name</h3>
+                        <label for="exampleInputEmail1" class="form-label">user name</label> 
+                    </div>
+                    <div class="mb-3">
+                      <h3>Email</h3>
+                        <label for="exampleInputEmail1" class="form-label">Email address</label> 
+                    </div>
+                    <div class="mb-3">
+                      <h3>Password</h3>
+                        <label for="exampleInputPassword1" class="form-label">Password</label> 
+                    </div>
+                    <div class="mb-3">
+                      <h3>Perfil</h3>
+                        <label for="disabledSelect" class="form-label">Perfil</label>                             
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="card-title fw-semibold mb-4">Foto</h5>
+                    <div class="card">
+                        <img src="views/styles/src/assets/images/products/s4.jpg" class="card-img-top" alt="...">                             
+                    </div>
+                </div> 
+            </div>
+
+            <div id="modalcontent_id">Modal content </div>  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+            </div>
+          
+        </div>
+      </div>
+    </div>           
+
+
 </div>
+ 
+ 
   <script src="views/styles/src/assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="views/styles/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="views/styles/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
@@ -158,7 +214,7 @@
   <script src="views/styles/src/assets/js/sidebarmenu.js"></script>
   <script src="views/styles/src/assets/js/app.min.js"></script>
   <script src="views/styles/src/assets/js/dashboard.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script> 
 </body>
 
 </html>

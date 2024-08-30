@@ -13,7 +13,13 @@ class UsersController {
         $resultusers = $this->model->getAll();
        // print_r(json_encode($users));
         require_once "./views/users/index.php"; 
-          //return index("user", compact("users"));
+    }
+
+     public function detalhes($id)
+    {
+        $resultusers = $this->model->getOne($id);
+       // print_r(json_encode($users));
+         return print_r(json_encode($resultusers));
     }
     
     public function create($data)
@@ -42,19 +48,11 @@ class UsersController {
     }
      public function insertdados()
     {
-         
-        //if(isset($_POST))    
-          //  print_r($_POST); 
-        //require_once "./views/users/create.php"; 
-        return $this->url_redirect('/index.php', false);
-   
+        return $this->url_redirect('/index.php', false);   
     }
 
      function url_redirect($url, $permanent = false)
     {      
         header('Location: ' . $url);       
     }
-
-
-
 }

@@ -18,6 +18,12 @@ class UserModel extends Connect {
         return $sqlSelect->fetchAll(PDO::FETCH_ASSOC);
         //$this->table->from($this->table);
     }
+
+    function getOne($id){
+        $sqlSelect = $this->query("Select * from $this->table where id = '$id'");
+        $resultQuery = $sqlSelect->fetch(PDO::FETCH_ASSOC);
+        return $resultQuery;
+    }
     function insert($data,  $uploadfile)
     {
         

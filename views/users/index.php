@@ -31,7 +31,10 @@
                         <a href="javascript:void(0)" class="link-primary text-dark fw-medium d-block"><?= $value["name"] ?></a>
                       </td>
                       <td class="text-center fw-medium"><?= $value["position"] ?></td>
-                      <td class="text-center fw-medium"><button type="button" class="btn btn-secondary m-1">view</button><button type="button" class="btn btn-warning m-1">edit</button><button type="button" class="btn btn-danger m-1">dalete</button></td>
+                      <td class="text-center fw-medium">
+                        <button type="button" class="btn btn-secondary m-1"  data-bs-toggle="modal" data-bs-target="#myModal" onclick="modalVewChange(<?= $value['username'] ?>, <?= $value['name'] ?>, <?= $value['position'] ?>, <?= $value['photo_perfil'] ?>)">view</button> 
+                        <button type="button" class="btn btn-warning m-1">edit</button>
+                        <button type="button" class="btn btn-danger m-1">dalete</button></td>
                     </tr>
 
                     <?php   } ?>
@@ -40,6 +43,14 @@
               </div>
             </div>
           </div>
+        </div> 
         </div>
- 
-        </div>
+<script type="text/javascript">
+  function modalVewChange(usernameid, emailid, pass_id, perfilid, fotoid){
+    $('#username_id ').html(usernameid);      
+    $('#email_id').html(emailid); 
+    $('#password_id').html(pass_id); 
+    $('#perfil_id').html(perfilid); 
+    $('#foto_id').html(fotoid);
+  }  
+</script>
